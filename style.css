@@ -1,0 +1,128 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #4e73df, #1cc88a);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Main Card */
+.main-container {
+  background: #ffffff;
+  width: 380px;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+.main-container:hover {
+  transform: translateY(-5px);
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: #4e73df;
+}
+
+/* Search Section */
+.search-box input {
+  padding: 10px;
+  width: 65%;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.search-box input:focus {
+  border-color: #4e73df;
+}
+
+.search-box button {
+  padding: 10px 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #4e73df;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.search-box button:hover {
+  background-color: #2e59d9;
+}
+
+/* 🌤 Image Spinner */
+.loader {
+  margin: 20px auto;
+  text-align: center;
+}
+
+.loader img {
+  width: 55px;
+  height: 55px;
+  animation: rotateWeather 1.2s linear infinite;
+}
+
+/* Rotation Animation */
+@keyframes rotateWeather {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Weather Result */
+#weatherResult {
+  margin-top: 15px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* History Section */
+.history-section {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.history-section h3 {
+  color: #1cc88a;
+  margin-bottom: 10px;
+}
+
+.history-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.history-section li {
+  background-color: #f8f9fc;
+  padding: 8px;
+  margin-bottom: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.history-section li:hover {
+  background-color: #d1e2ff;
+}
+
+/* Clear Button */
+#clearHistory {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 6px;
+  background-color: #e74a3b;
+  color: white;
+  cursor: pointer;
+  margin-bottom: 10px;
+  font-size: 12px;
+  transition: 0.3s;
+}
+
+#clearHistory:hover {
+  background-color: #c0392b;
+}

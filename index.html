@@ -1,21 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+  <title>Async Weather Tracker</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div>
-    <form id="weather_form">
-        <label for="city">Search City</label>
-        <input type="text" id="city">
-        <input type="submit" id ="search" value="Search"> 
-    </form>
+
+  <div class="main-container">
+    <h1>Async Weather Tracker 🌤️</h1>
+
+    <!-- Search Section -->
+    <div class="search-box">
+      <input type="text" id="cityInput" placeholder="Enter city name">
+      <button id="searchBtn">Search</button>
+
+      <!-- Image Spinner -->
+      <div id="loader" class="loader" style="display: none;">
+        <img src="https://cdn-icons-png.flaticon.com/512/869/869869.png" alt="Loading">
+      </div>
+
+      <!-- Weather Result -->
+      <div id="weatherResult"></div>
     </div>
-    <div class="info"></div>
-    <div class="event"></div>
-    <script src="script.js"></script>
+
+    <!-- History Section -->
+    <div class="history-section">
+      <h3>Recent Searches</h3>
+      <button id="clearHistory">Clear History</button>
+      <ul id="historyList"></ul>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>

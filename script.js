@@ -1,31 +1,100 @@
-//https://api.openweathermap.org/data/2.5/weather?q=kharar&apiid=203f8a4bcc957a869ee34933d843ab48
+const apiKey = "YOUR_API_KEY";
 
-const API_Key = "5b38ca2c61e412e406a771e81ac0fdd5"
-const form = document.querySelector("#weather_form")
-const city = document.querySelector("#city")
+const cityInput = document.getElementById("cityInput");
+const searchBtn = document.getElementById("searchBtn");
+const weatherResult = document.getElementById("weatherResult");
+const historyList = document.getElementById("historyList");
+const loader = document.getElementById("loader");
+const clearHistoryBtn = document.getElementById("clearHistory");
 
-form.addEventListener("submit", async (e) => {
-    e.preventDefault()
+console.log("Script Start");
 
-    const data = city.value
+// Load history on page load
+window.addEventListener("DOMContentLoaded", loadHistory);
+
+// Search Button Click
+searchBtn.addEventListener("click", () => {
+  const city = cityInput.value.trim();
+
+  if (city === "") {
+    alert("Please enter a city name");
+    return;
+  }
+
+  fetchWeather(city);
+});
+
+// Async Function
+async function fetchWeather(city) {
+  console.log("Fetching weather for:", city);
+
+  try {
+    loader.style.display = "block";
+    weatherResult.innerHTML = "";
+
+    console.log("Before fetch call");
 
     const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${data}&appid=${API_Key}`
-    )
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
+    );
 
-    const weatherData = await response.json()
+    console.log("After fetch call");
 
-    // console.log("City:", weatherData.name)
-    // console.log("Temperature:", (weatherData.main.temp - 273).toFixed(1), "C")
-    // console.log("Weather:", weatherData.weather[0].main)
-    // console.log("Humidity:", weatherData.main.humidity)
-    // console.log("Wind:", weatherData.wind.speed, "m/s")
-    weatherInfo.innerHTML`
-    <p>City: ${weatherData.name}</p>
-    <p>Temprature: ${(weatherData.main.temp-273).toFixed(1)} C</p>
-    <p>Weather: ${weatherData.weather[0].main}</p>
-    <p>Humidity: ${weatherData.main.humidity}</p>
-    <p>Wind: ${weatherData.weatherData.wind.speed} m/s</p>
-    `
-})
+    if (!response.ok) {
+      throw new Error("City not found");
+    }
 
+    const data = await response.json();
+
+    displayWeather(data);
+    saveToLocalStorage(city);
+
+  } catch (error) {
+    console.error("Error:", error);
+    weatherResult.innerHTML = "⚠️ " + error.message;
+  } finally {
+    loader.style.display = "none";
+  }
+}
+
+// Display Weather
+function displayWeather(data) {
+  weatherResult.innerHTML = `
+    City: ${data.name} <br>
+    Temperature: ${data.main.temp} °C <br>
+    Condition: ${data.weather[0].description}
+  `;
+}
+
+// Save History
+function saveToLocalStorage(city) {
+  let history = JSON.parse(localStorage.getItem("cities")) || [];
+
+  if (!history.includes(city)) {
+    history.push(city);
+    localStorage.setItem("cities", JSON.stringify(history));
+  }
+
+  loadHistory();
+}
+
+// Load History
+function loadHistory() {
+  historyList.innerHTML = "";
+  let history = JSON.parse(localStorage.getItem("cities")) || [];
+
+  history.forEach(city => {
+    const li = document.createElement("li");
+    li.textContent = city;
+    li.addEventListener("click", () => fetchWeather(city));
+    historyList.appendChild(li);
+  });
+}
+
+// Clear History
+clearHistoryBtn.addEventListener("click", () => {
+  localStorage.removeItem("cities");
+  loadHistory();
+});
+
+console.log("Script End");
