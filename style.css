@@ -8,55 +8,72 @@ body {
   height: 100vh;
 }
 
+/* Wrapper */
+.main-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 /* Main Card */
 .main-container {
   background: #ffffff;
-  width: 380px;
+  width: 400px;
   padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 18px;
+  box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.18);
   text-align: center;
   transition: 0.3s ease;
 }
 
 .main-container:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
 }
 
 h1 {
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   color: #4e73df;
+  font-weight: 600;
 }
 
 /* Search Section */
-.search-box input {
+.search-input-group {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.search-input-group input {
   padding: 10px;
   width: 65%;
   border-radius: 8px;
   border: 1px solid #ccc;
   outline: none;
+  transition: 0.3s;
 }
 
-.search-box input:focus {
+.search-input-group input:focus {
   border-color: #4e73df;
+  box-shadow: 0 0 5px rgba(78, 115, 223, 0.3);
 }
 
-.search-box button {
-  padding: 10px 12px;
+.search-input-group button {
+  padding: 10px 14px;
   border: none;
   border-radius: 8px;
   background-color: #4e73df;
   color: white;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 600;
   transition: 0.3s;
 }
 
-.search-box button:hover {
+.search-input-group button:hover {
   background-color: #2e59d9;
+  transform: scale(1.05);
 }
 
-/* 🌤 Image Spinner */
+/* 🌤 Spinner */
 .loader {
   margin: 20px auto;
   text-align: center;
@@ -68,7 +85,6 @@ h1 {
   animation: rotateWeather 1.2s linear infinite;
 }
 
-/* Rotation Animation */
 @keyframes rotateWeather {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
@@ -77,24 +93,36 @@ h1 {
 /* Weather Result */
 #weatherResult {
   margin-top: 15px;
-  font-weight: bold;
+  font-weight: 600;
   color: #333;
+  line-height: 1.6;
 }
 
 /* History Section */
 .history-section {
-  margin-top: 20px;
+  margin-top: 30px;
   text-align: left;
 }
 
-.history-section h3 {
-  color: #1cc88a;
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 10px;
 }
 
+.history-header h3 {
+  color: #1cc88a;
+  margin: 0;
+}
+
+/* History List */
 .history-section ul {
   list-style: none;
   padding: 0;
+  margin: 0;
+  max-height: 130px;
+  overflow-y: auto;
 }
 
 .history-section li {
@@ -108,23 +136,32 @@ h1 {
 
 .history-section li:hover {
   background-color: #d1e2ff;
+  transform: translateX(3px);
 }
 
 /* Clear Button */
 #clearHistory {
-  padding: 6px 10px;
+  padding: 6px 12px;
   border: none;
   border-radius: 6px;
   background-color: #e74a3b;
   color: white;
   cursor: pointer;
-  margin-bottom: 10px;
   font-size: 12px;
   transition: 0.3s;
 }
 
 #clearHistory:hover {
   background-color: #c0392b;
+  transform: scale(1.05);
 }
 
-/* added loading System */
+/* Footer */
+.footer {
+  margin-top: 20px;
+  padding: 10px 15px;
+  color: white;
+  font-size: 14px;
+  text-align: center;
+  opacity: 0.9;
+}
