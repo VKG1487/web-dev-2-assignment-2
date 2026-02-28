@@ -6,29 +6,43 @@
 </head>
 <body>
 
-  <div class="main-container">
-    <h1>Async Weather Tracker</h1>
+  <div class="main-wrapper">
 
-    <!-- Search Section -->
-    <div class="search-box">
-      <input type="text" id="cityInput" placeholder="Enter city name">
-      <button id="searchBtn">Search</button>
+    <div class="main-container">
+      <h1>Async Weather Tracker</h1>
 
-      <!-- Image Spinner -->
-      <div id="loader" class="loader" style="display: none;">
-        <img src="https://cdn-icons-png.flaticon.com/512/869/869869.png" alt="Loading">
+      <!-- Search Section -->
+      <div class="search-box">
+        <div class="search-input-group">
+          <input type="text" id="cityInput" placeholder="Enter city name">
+          <button id="searchBtn">Search</button>
+        </div>
+
+        <!-- Image Spinner -->
+        <div id="loader" class="loader" style="display: none;">
+          <img src="https://cdn-icons-png.flaticon.com/512/869/869869.png" alt="Loading">
+        </div>
+
+        <!-- Weather Result -->
+        <div id="weatherResult"></div>
       </div>
 
-      <!-- Weather Result -->
-      <div id="weatherResult"></div>
+      <!-- History Section -->
+      <div class="history-section">
+        <div class="history-header">
+          <h3>Recent Searches</h3>
+          <button id="clearHistory">Clear</button>
+        </div>
+        <ul id="historyList"></ul>
+      </div>
     </div>
 
-    <!-- History Section -->
-    <div class="history-section">
-      <h3>Recent Searches</h3>
-      <button id="clearHistory">Clear History</button>
-      <ul id="historyList"></ul>
-    </div>
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Vibhash Kumar Giri | ssxvkg@gmail.com | +91 79800 84200</p>
+        <p>B. Tech CSE | 2501010069 | K.R. Mangalam University</p>
+    </footer>
+
   </div>
 
   <script src="script.js"></script>
