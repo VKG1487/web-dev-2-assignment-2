@@ -98,3 +98,5 @@ clearHistoryBtn.addEventListener("click", () => {
 });
 
 console.log("Script End");
+
+// Updated JS
