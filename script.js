@@ -1,4 +1,4 @@
-const apiKey = "c5cd910b6f4ff9de6f84b4cf98294046";
+const apiKey = "YOUR_API_KEY";
 
 const cityInput = document.getElementById("cityInput");
 const searchBtn = document.getElementById("searchBtn");
@@ -60,9 +60,11 @@ async function fetchWeather(city) {
 // Display Weather
 function displayWeather(data) {
   weatherResult.innerHTML = `
-    City: ${data.name} <br>
+    <h1>Place: ${data.name} <br></h1>
     Temperature: ${data.main.temp} °C <br>
-    Condition: ${data.weather[0].description}
+    Weather: ${data.weather[0].description}<br>
+    Humidity: ${data.main.humidity}<br>
+    Wind Speed: ${data.wind.speed} m/s
   `;
 }
 
